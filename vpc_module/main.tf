@@ -1,3 +1,5 @@
+//${} to access the var and concatenate as a string
+//count.index to iterate the number
 //setup provider and region
 provider "aws" {
   region = "us-east-1"
@@ -107,7 +109,7 @@ resource "aws_route_table" "private-rt" {
     cidr_block = "0.0.0.0/0"           //all traffic 
     gateway_id = aws_nat_gateway.ng.id // nat gateway
   }
-
+  //it species the resource lifecycle when making changing to the route attribute
   lifecycle {
     ignore_changes = [route]
   }
