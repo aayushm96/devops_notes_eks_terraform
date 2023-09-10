@@ -16,7 +16,9 @@ resource "aws_iam_role" "eks-cluster" {
 }
 POLICY
 }
-
+//polices for eks cluster will be
+///AmazonEKSClusterPolicy
+///AmazonEKSServicePolicy
 resource "aws_iam_role_policy_attachment" "eks-cluster-AmazonEKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
   role       = aws_iam_role.eks-cluster.name
@@ -26,7 +28,7 @@ resource "aws_iam_role_policy_attachment" "eks-cluster-AmazonEKSServicePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
   role       = aws_iam_role.eks-cluster.name
 }
-
+//security grp for eks cluster
 resource "aws_security_group" "eks-cluster" {
   name        = "${var.cluster_name}-cluster-sg"
   description = "Cluster communication with worker nodes"
@@ -51,15 +53,15 @@ resource "aws_security_group" "eks-cluster" {
     Name = var.cluster_name
   }
 }
-
+//setup the eks 
 resource "aws_eks_cluster" "eks" {
   name     = var.cluster_name
   role_arn = aws_iam_role.eks-cluster.arn
   version  = var.eks-version
-
+  //the vpc here for eks cluster
   vpc_config {
     security_group_ids      = [aws_security_group.eks-cluster.id]
-    subnet_ids              = [var.public-subnet-1, var.public-subnet-2, var.public-subnet-3, var.private-subnet-1, var.private-subnet-2, var.private-subnet-3]
+    subnet_ids              = [var.public-subnet-1, var.public-subnet-2, var.private-subnet-1, var.private-subnet-2]
     endpoint_private_access = false
     endpoint_public_access  = true
   }
