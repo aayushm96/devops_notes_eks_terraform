@@ -1,23 +1,23 @@
 //${} to access the var and concatenate as a string
 //count.index to iterate the number
 //setup provider and region
-provider "aws" {
-  region = "us-east-1"
-  //region = data.aws_region.current.name 
-  // hard code the region else it will give cycle error since first provider is run first then data_source
-  //will fetch the region to overcome we can harcode or setup a deafult region 
-  //with condition
-  #   provider "aws" {
-  #   region = var.aws_default_region  # Set a default region in your variables
-  # }
+# provider "aws" {
+#   region = "us-east-1"
+#   //region = data.aws_region.current.name 
+#   // hard code the region else it will give cycle error since first provider is run first then data_source
+#   //will fetch the region to overcome we can harcode or setup a deafult region 
+#   //with condition
+#   #   provider "aws" {
+#   #   region = var.aws_default_region  # Set a default region in your variables
+#   # }
 
-  # data "aws_region" "current" {}
+#   # data "aws_region" "current" {}
 
-  # # Conditionally override the region if the data source provides a value
-  # provider "aws" {
-  #   region = data.aws_region.current.name != "" ? data.aws_region.current.name : var.aws_default_region
-  # }
-}
+#   # # Conditionally override the region if the data source provides a value
+#   # provider "aws" {
+#   #   region = data.aws_region.current.name != "" ? data.aws_region.current.name : var.aws_default_region
+#   # }
+# }
 //setup vpc 
 resource "aws_vpc" "vpc" {
   cidr_block           = var.cidr

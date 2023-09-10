@@ -1,3 +1,4 @@
+//anything defined here can be accessed outside the moudule like an variable inside the module
 output "vpc_id" {
   value = aws_vpc.vpc.id
 }
