@@ -1,7 +1,7 @@
 variable "cluster_name" {}
 variable "env" {}
 variable "eks-version" {
-  default = "1.26"
+  default = "1.21"
 }
 
 variable "vpc_id" {}
