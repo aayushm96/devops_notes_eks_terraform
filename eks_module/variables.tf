@@ -1,6 +1,8 @@
 variable "cluster_name" {}
 variable "env" {}
-variable "eks-version" {}
+variable "eks-version" {
+  default = "1.26"
+}
 
 variable "vpc_id" {}
 variable "cidr" {}
