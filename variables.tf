@@ -17,7 +17,7 @@ variable "env" {
 }
 
 variable "eks-version" {
-  default     = "1.21"
+  default     = "1.26"
   type        = string
   description = "Version of EKS cluster"
 }
