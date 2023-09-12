@@ -61,9 +61,9 @@ resource "aws_eks_cluster" "eks" {
   //the vpc here for eks cluster
   vpc_config {
     security_group_ids      = [aws_security_group.eks-cluster.id]
-    subnet_ids              = [var.public-subnet-1, var.public-subnet-2, var.private-subnet-1, var.private-subnet-2]
-    endpoint_private_access = false
-    endpoint_public_access  = true
+    subnet_ids              = [var.private-subnet-1, var.private-subnet-2]
+    endpoint_private_access = true
+    endpoint_public_access  = false
   }
 
   depends_on = [

@@ -108,7 +108,7 @@ resource "aws_eks_node_group" "eks-node-group" {
   cluster_name    = aws_eks_cluster.eks.name
   node_group_name = "${var.cluster_name}-eks-nodegroup"
   node_role_arn   = aws_iam_role.eks-node.arn
-  subnet_ids      = [var.private-subnet-1, var.private-subnet-2, var.private-subnet-3]
+  subnet_ids      = [var.private-subnet-1, var.private-subnet-2]
   capacity_type   = var.capicity_type
 
   scaling_config {
